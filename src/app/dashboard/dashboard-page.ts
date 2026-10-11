@@ -14,7 +14,7 @@ import { TimingTower } from './timing-tower';
   imports: [TimingTower, OnboardPanel, DriverProfile, Telemetry, TeamRadio],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="mx-auto flex max-w-[1440px] flex-col gap-3.5 p-4 md:px-7 md:pt-5 md:pb-7">
+    <div class="mx-auto flex max-w-360 flex-col gap-3.5 p-4 md:px-7 md:pt-5 md:pb-7">
       <div class="grid grid-cols-1 gap-3.5 md:grid-cols-[300px_minmax(0,1fr)] xl:grid-cols-[330px_minmax(0,1fr)_330px]">
         <app-timing-tower [projects]="projects" [selected]="selection.selected()" [flash]="selection.returningFrom()"
                           (select)="selection.selected.set($event)" />
