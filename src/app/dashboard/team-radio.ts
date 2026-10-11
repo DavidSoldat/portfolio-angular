@@ -42,8 +42,8 @@ type Status = 'idle' | 'sending' | 'sent' | 'error';
             @if (shown('message'); as e) { <span id="err-message" class="err">{{ e }}</span> }
           </label>
           <!-- Honeypot: hidden from people and assistive tech, bots fill it in. -->
-          <label class="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">Website
-            <input name="website" formControlName="website" tabindex="-1" autocomplete="off" />
+          <label class="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">Leave this empty
+            <input name="hp_trap" formControlName="hp_trap" tabindex="-1" autocomplete="off" />
           </label>
           <button type="submit" class="btn btn-yellow self-start" [disabled]="status() === 'sending'">
             <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path class="fill-ground" d="M1 8 15 1 11 15 8 9z" /></svg>
@@ -77,7 +77,7 @@ export class TeamRadio {
     name: new FormControl('', { nonNullable: true }),
     email: new FormControl('', { nonNullable: true }),
     message: new FormControl('', { nonNullable: true }),
-    website: new FormControl('', { nonNullable: true }),
+    hp_trap: new FormControl('', { nonNullable: true }),
   });
 
   private errors(): ContactErrors {

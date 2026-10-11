@@ -30,7 +30,17 @@ export function validateContact(input: unknown): ContactValidation {
   else if (message.length > 5000) errors.message = 'Keep the message under 5000 characters.';
 
   if (Object.keys(errors).length) return { ok: false, errors };
-  return { ok: true, value: { name, email, message }, bot: text(o['website']) !== '' };
+  // Honeypot field name avoids anything browser autofill fills in (website, url, company...).
+  return { ok: true, value: { name, email, message }, bot: text(o['hp_trap']) !== '' };
+}
+
+/** Reads a request body whose getter may throw (Vercel parses JSON lazily and throws on bad JSON). */
+export function readBody(get: () => unknown): unknown {
+  try {
+    return get();
+  } catch {
+    return null;
+  }
 }
 
 function parse(body: unknown): unknown {

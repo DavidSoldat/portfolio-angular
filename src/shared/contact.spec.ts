@@ -1,5 +1,5 @@
 import { vi } from 'vitest';
-import { handleContact, validateContact } from './contact';
+import { handleContact, readBody, validateContact } from './contact';
 
 const valid = { name: 'Ana', email: 'ana@example.com', message: 'Hello David, are you available?' };
 
@@ -39,8 +39,13 @@ describe('validateContact', () => {
   });
 
   it('flags a filled honeypot as a bot', () => {
-    const r = validateContact({ ...valid, website: 'http://spam.example' });
+    const r = validateContact({ ...valid, hp_trap: 'http://spam.example' });
     expect(r.ok && r.bot).toBe(true);
+  });
+
+  it('does not treat an autofilled website field as a bot', () => {
+    const r = validateContact({ ...valid, website: 'https://ana.dev' });
+    expect(r.ok && r.bot).toBe(false);
   });
 
   it('treats non-objects as empty input', () => {
@@ -83,7 +88,7 @@ describe('handleContact', () => {
 
   it('pretends success for bots without sending', async () => {
     const send = vi.fn();
-    const r = await handleContact('POST', { ...valid, website: 'x' }, send);
+    const r = await handleContact('POST', { ...valid, hp_trap: 'x' }, send);
     expect(r.status).toBe(200);
     expect(send).not.toHaveBeenCalled();
   });
@@ -93,5 +98,17 @@ describe('handleContact', () => {
     const r = await handleContact('POST', valid, vi.fn().mockRejectedValue(new Error('SMTP auth failed: secret')));
     expect(r.status).toBe(502);
     expect(JSON.stringify(r.body)).not.toContain('secret');
+  });
+});
+
+describe('readBody', () => {
+  it('returns the body when reading it works', () => {
+    expect(readBody(() => ({ a: 1 }))).toEqual({ a: 1 });
+  });
+
+  it('returns null when the platform throws while parsing (malformed JSON)', async () => {
+    const body = readBody(() => { throw new Error('Invalid JSON'); });
+    expect(body).toBeNull();
+    expect((await handleContact('POST', body, vi.fn())).status).toBe(400);
   });
 });

@@ -41,7 +41,7 @@ describe('TeamRadio', () => {
     expect(el.querySelector('button[type="submit"]')?.textContent).toContain('Sending');
     const req = http.expectOne('/api/contact');
     expect(req.request.method).toBe('POST');
-    expect(req.request.body).toEqual({ name: 'Ana', email: 'ana@example.com', message: 'Hello David, are you available?', website: '' });
+    expect(req.request.body).toEqual({ name: 'Ana', email: 'ana@example.com', message: 'Hello David, are you available?', hp_trap: '' });
     req.flush({ ok: true });
     await fixture.whenStable();
     expect(el.querySelector('[role="status"]')?.textContent).toContain("I'll reply to ana@example.com");

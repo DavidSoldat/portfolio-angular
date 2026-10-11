@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
-import { handleContact, type ContactMessage } from '../src/shared/contact';
+import { handleContact, readBody, type ContactMessage } from '../src/shared/contact';
 
 const transport = nodemailer.createTransport({
   service: 'gmail',
@@ -18,6 +18,6 @@ async function send(m: ContactMessage): Promise<void> {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const result = await handleContact(req.method ?? '', req.body, send);
+  const result = await handleContact(req.method ?? '', readBody(() => req.body), send);
   res.status(result.status).json(result.body);
 }
