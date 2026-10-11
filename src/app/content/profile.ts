@@ -2,7 +2,7 @@ export const PROFILE = {
   name: 'David Soldat',
   role: 'Software engineer, Banja Luka',
   status: 'Green flag: open to backend and full-stack roles',
-  bio: "Hey there, welcome! I'm David, a software engineer with a passion for building for the web. I work in Java, Spring Boot, Kafka, PostgreSQL and Redis on the backend, Angular, Next.js and TypeScript on the front, and lately I wire ML models and LLM agents into real products. When I'm not coding, you'll find me watching F1 or binging a TV show.",
+  bio: "I'm David, a backend-leaning software engineer at the Indirect Taxation Authority in Banja Luka. I like the parts of a system most people never see: services that fail safely, events that don't get lost, and models that can explain their decisions. Most of my work is in Java and Spring Boot, with Angular or Next.js on the front. Outside work I watch F1 closely enough that this site ended up looking like a pit wall.",
   summary: 'Backend-focused software engineer building Java and Spring Boot systems with Kafka, multi-tenant SaaS design and ML and LLM integration, plus Angular and Next.js on the front.',
   facts: [
     { label: 'Team', value: 'Indirect Taxation Authority, software engineer since Nov 2024' },
