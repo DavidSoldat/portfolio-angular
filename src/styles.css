@@ -69,3 +69,13 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Loading screen: hide the page until launch. Fallback reveals it after 6s if scripts fail. */
+.intro-pending .stage { visibility: hidden; animation: reveal 0s 6s forwards; }
+@keyframes reveal { to { visibility: visible; } }
+
+/* Launch beat: the dashboard assembles behind the stripes. */
+.launch .tower-row { animation: row-in .45s cubic-bezier(.2, .8, .2, 1) backwards; animation-delay: calc(var(--i, 0) * 60ms + .25s); }
+.launch app-onboard-panel, .launch app-driver-profile, .launch app-telemetry, .launch app-team-radio { animation: panel-in .5s ease-out .35s backwards; }
+@keyframes row-in { from { transform: translateX(-40px); opacity: 0; } }
+@keyframes panel-in { from { opacity: 0; transform: translateY(12px); } }

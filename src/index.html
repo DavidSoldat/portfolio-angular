@@ -2,6 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script>
+      try {
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('intro-pending');
+      } catch (e) {}
+    </script>
     <title>David Soldat</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
