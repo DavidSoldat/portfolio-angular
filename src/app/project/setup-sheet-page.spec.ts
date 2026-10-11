@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { SetupSheetPage } from './setup-sheet-page';
+import { SetupSheetPage, heroInk } from './setup-sheet-page';
 import { SelectionService } from '../selection';
 
 async function render(slug: string) {
@@ -44,5 +44,17 @@ describe('SetupSheetPage', () => {
     const { fixture } = await render('datalytics');
     fixture.destroy();
     expect(TestBed.inject(SelectionService).returningFrom()).toBe('datalytics');
+  });
+});
+
+describe('heroInk', () => {
+  it.each([
+    ['#E10600', 'light'],
+    ['#3671C6', 'light'],
+    ['#27F4D2', 'dark'],
+    ['#FF8000', 'dark'],
+    ['#9EA3AE', 'dark'],
+  ] as const)('%s needs %s text', (hex, ink) => {
+    expect(heroInk(hex)).toBe(ink);
   });
 });

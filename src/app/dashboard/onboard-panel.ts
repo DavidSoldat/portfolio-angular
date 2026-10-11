@@ -21,7 +21,7 @@ import { TrackMap } from './track-map';
               <p class="text-[17px] text-soft">{{ p.blurb }}</p>
             </div>
             @if (p.fastest) {
-              <div class="fastest disp ml-auto flex items-center gap-2 self-start bg-purple px-3.5 py-2 text-[17px] font-extrabold text-ground">
+              <div class="fastest disp ml-auto hidden items-center whitespace-nowrap md:flex gap-2 self-start bg-purple px-3.5 py-2 text-[17px] font-extrabold text-ground">
                 <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" class="fill-none stroke-ground stroke-2">
                   <circle cx="9" cy="10" r="7" /><path d="M9 10V6M7 1h4" />
                 </svg>

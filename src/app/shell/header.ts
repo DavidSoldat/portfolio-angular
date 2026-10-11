@@ -20,7 +20,7 @@ import { ClockService } from './clock';
           <span class="text-[13px] text-muted">{{ profile.role }}</span>
         </div>
       </div>
-      <p class="flex items-center gap-2.5 border border-[#1f6b3a] bg-[#0f2a1a] px-3.5 py-2 text-[15px] font-semibold text-[#b8f5cb]">
+      <p class="flex max-w-full items-center gap-2.5 border border-[#1f6b3a] bg-[#0f2a1a] px-3.5 py-2 text-[15px] font-semibold text-[#b8f5cb]">
         <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
           <path d="M3 2v15" class="fill-none stroke-green stroke-2" /><path d="M4 3h11l-3 4 3 4H4z" class="fill-green" />
         </svg>

@@ -7,6 +7,16 @@ import { Seo } from '../seo';
 import { SelectionService } from '../selection';
 import { ArchitectureDiagram } from './architecture-diagram';
 
+/** White or dark text on a team colour, whichever passes WCAG 4.5:1 against white. */
+export function heroInk(hex: string): 'light' | 'dark' {
+  const [r, g, b] = [1, 3, 5].map((i) => {
+    const c = parseInt(hex.slice(i, i + 2), 16) / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return 1.05 / (luminance + 0.05) >= 4.5 ? 'light' : 'dark';
+}
+
 @Component({
   selector: 'app-setup-sheet-page',
   imports: [RouterLink, ArchitectureDiagram, NotFoundPage],
@@ -26,17 +36,17 @@ import { ArchitectureDiagram } from './architecture-diagram';
           </nav>
         </div>
 
-        <section class="relative overflow-hidden bg-(--team) text-white" style="view-transition-name: project-band">
+        <section class="relative overflow-hidden bg-(--team)" [class.text-white]="ink() === 'light'" [class.text-ground]="ink() === 'dark'" style="view-transition-name: project-band">
           <span class="disp absolute -top-[60px] right-[2%] text-[380px] leading-none font-black text-black/20 italic" aria-hidden="true">P{{ position() }}</span>
           <div class="relative mx-auto flex max-w-346 flex-col gap-4 px-7 pt-11 pb-10">
             <div class="flex flex-wrap items-center gap-2.5">
-              <span class="disp bg-ground px-3 py-1 text-xl font-extrabold" style="view-transition-name: project-pos">{{ position() }}</span>
-              <span class="disp bg-ground px-3 py-1 text-xl font-extrabold">{{ p.code }}</span>
+              <span class="disp bg-ground px-3 py-1 text-xl font-extrabold text-white" style="view-transition-name: project-pos">{{ position() }}</span>
+              <span class="disp bg-ground px-3 py-1 text-xl font-extrabold text-white">{{ p.code }}</span>
               @if (p.fastest) { <span class="disp bg-purple px-3 py-1 text-lg font-extrabold text-ground">Fastest lap</span> }
             </div>
-            <h1 class="disp text-[clamp(64px,10vw,120px)] leading-[.9] font-black italic [text-shadow:0_2px_0_rgb(0_0_0/.25)]"
+            <h1 class="disp text-[clamp(64px,10vw,120px)] leading-[.9] font-black italic"
                 style="view-transition-name: project-title">{{ p.title }}</h1>
-            <p class="max-w-160 text-xl leading-snug [text-shadow:0_1px_0_rgb(0_0_0/.3)]">{{ p.intro }}</p>
+            <p class="max-w-160 text-xl leading-snug">{{ p.intro }}</p>
             <div class="mt-2 flex flex-wrap gap-2.5">
               @if (p.links.live) { <a class="btn btn-light" [href]="p.links.live">Try the live demo</a> }
               @if (p.links.github) { <a class="btn bg-ground text-chalk" [href]="p.links.github">View code on GitHub</a> }
@@ -138,6 +148,7 @@ export class SetupSheetPage {
   protected readonly next = computed(() => PROJECTS[this.nextIndex()]);
   protected readonly prevPos = computed(() => this.prevIndex() + 1);
   protected readonly nextPos = computed(() => this.nextIndex() + 1);
+  protected readonly ink = computed(() => heroInk(this.project()?.teamColor ?? '#E10600'));
   protected readonly color = SECTOR_COLOR;
   protected readonly kindName = SECTOR_NAME;
 
