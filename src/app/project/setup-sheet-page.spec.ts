@@ -35,9 +35,12 @@ describe('SetupSheetPage', () => {
     expect(el.querySelector('a.next')?.getAttribute('href')).toBe('/projects/sentra');
   });
 
-  it('shows labelled placeholders for missing screenshots', async () => {
+  it('links each screenshot to its full-size image with a label', async () => {
     const { el } = await render('trucknest');
-    expect(el.querySelectorAll('.shot .placeholder').length).toBe(3);
+    const links = el.querySelectorAll<HTMLAnchorElement>('.shot a');
+    expect(links.length).toBe(3);
+    expect(links[0].getAttribute('href')).toBe('/projects/trucknest/sign-in.webp');
+    expect(links[0].getAttribute('aria-label')).toContain('opens full size');
   });
 
   it('remembers the project for the dashboard flash when leaving', async () => {

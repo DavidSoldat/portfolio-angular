@@ -32,9 +32,9 @@ export const PROJECTS: readonly Project[] = [
     stack: ['Spring Boot', 'Angular', 'Kafka', 'PostgreSQL', 'Redis', 'Keycloak', 'ONNX Runtime', 'k3s'],
     links: { github: `${GH}/bridgepay`, live: 'https://bridgepay.duckdns.org' },
     shots: [
-      { alt: 'Ops review queue with a credit decision explanation chart', caption: 'Ops review queue with the model\'s explanation chart' },
-      { alt: 'Storefront checkout offering Pay in 4', caption: 'Storefront checkout' },
-      { alt: 'Merchant dashboard with sales and payouts', caption: 'Merchant sales and payouts' },
+      { src: '/projects/bridgepay/operations.webp', alt: 'Operations dashboard with decision mix and risk score charts', caption: 'Ops dashboard: decision mix and score distribution' },
+      { src: '/projects/bridgepay/checkout.webp', alt: 'Storefront checkout offering Pay in 4 with BridgePay', caption: 'Storefront checkout' },
+      { src: '/projects/bridgepay/sales.webp', alt: 'Merchant sales dashboard with volume chart and checkout funnel', caption: 'Merchant sales and checkout funnel' },
     ],
     diagram: {
       width: 1120, height: 576,
@@ -99,9 +99,9 @@ export const PROJECTS: readonly Project[] = [
     stack: ['Spring Boot', 'Next.js', 'langchain4j', 'pgvector', 'Docker', 'Paddle', 'GitHub OAuth2'],
     links: { github: `${GH}/Sentra` },
     shots: [
-      { alt: 'Chat answering a question about a repository with file citations', caption: 'Codebase Q&A with file and line citations' },
-      { alt: 'Pull request review with findings from four agents', caption: 'PR review from four agents' },
-      { alt: 'Plan and usage page', caption: 'Plans and usage' },
+      { src: '/projects/sentra/chat.webp', alt: 'Chat answering what the Sentra repository does', caption: 'Codebase Q&A' },
+      { src: '/projects/sentra/review.webp', alt: 'Pull request review with security, architecture, performance and docs findings', caption: 'PR review from four agents' },
+      { src: '/projects/sentra/settings.webp', alt: 'Settings with usage, billing and AI model choice', caption: 'Usage, billing and model choice' },
     ],
     diagram: {
       width: 1120, height: 440,
@@ -162,9 +162,9 @@ export const PROJECTS: readonly Project[] = [
     stack: ['Spring Boot', 'Spring Modulith', 'Next.js', 'PostgreSQL', 'Keycloak', 'Kafka', 'Redis', 'Docker'],
     links: { github: `${GH}/truckNest` },
     shots: [
-      { alt: 'Fleet dashboard with alert cards and calendar', caption: 'Dashboard with alerts and calendar' },
-      { alt: 'Truck detail page with service records', caption: 'Truck service records' },
-      { alt: 'Invoice list with overdue status', caption: 'Invoices' },
+      { src: '/projects/trucknest/sign-in.webp', alt: 'TruckNest sign-in page', caption: 'Sign in' },
+      { src: '/projects/trucknest/trucks.webp', alt: 'Truck list with next service date and status', caption: 'Trucks with next service date' },
+      { src: '/projects/trucknest/invoices.webp', alt: 'Invoice list with status filters', caption: 'Invoices' },
     ],
     diagram: {
       width: 1120, height: 400,
@@ -219,9 +219,9 @@ export const PROJECTS: readonly Project[] = [
     stack: ['Spring Boot', 'Next.js', 'PostgreSQL', 'Backblaze', 'JWT', 'OAuth2', 'Recharts'],
     links: { github: `${GH}/DataAnalyticsApp` },
     shots: [
-      { alt: 'Drag and drop upload area', caption: 'Upload' },
-      { alt: 'Column statistics table', caption: 'Column statistics' },
-      { alt: 'Interactive charts for a dataset', caption: 'Charts' },
+      { src: '/projects/datalytics/dashboard.webp', alt: 'Dashboard with dataset totals and recent uploads', caption: 'Dashboard' },
+      { src: '/projects/datalytics/datasets.webp', alt: 'Grid of uploaded datasets with row and column counts', caption: 'My datasets' },
+      { src: '/projects/datalytics/column-stats.webp', alt: 'Column statistics for a sales dataset', caption: 'Column statistics' },
     ],
     diagram: {
       width: 960, height: 330,
@@ -268,9 +268,9 @@ export const PROJECTS: readonly Project[] = [
     stack: ['Next.js', 'PostgreSQL', 'Prisma', 'Tailwind CSS', 'Leaflet', 'Firebase Storage', 'JWT', 'MUI'],
     links: { github: `${GH}/HomeQuest`, live: 'https://home-quest-eta.vercel.app/' },
     shots: [
-      { alt: 'Map with property pins', caption: 'Map view' },
-      { alt: 'Property listing page', caption: 'Listing' },
-      { alt: 'Agent page with their properties', caption: 'Agent directory' },
+      { src: '/projects/homequest/map.webp', alt: 'Map of Banja Luka with price pins beside property listings', caption: 'Map view' },
+      { src: '/projects/homequest/listing.webp', alt: 'Property detail page with price, size and agent contact', caption: 'Listing' },
+      { src: '/projects/homequest/sign-in.webp', alt: 'Sign-in with email, Google or GitHub', caption: 'Sign in' },
     ],
     diagram: {
       width: 900, height: 360,

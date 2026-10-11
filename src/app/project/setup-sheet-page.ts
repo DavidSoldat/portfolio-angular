@@ -100,9 +100,11 @@ export function heroInk(hex: string): 'light' | 'dark' {
               @for (s of p.shots; track $index) {
                 <figure class="shot flex flex-col gap-2">
                   @if (s.src) {
-                    <img class="aspect-16/10 w-full object-cover" [src]="s.src" [alt]="s.alt" loading="lazy" />
+                    <a [href]="s.src" target="_blank" rel="noopener" [attr.aria-label]="s.alt + ' (opens full size)'">
+                      <img class="aspect-2/1 w-full border border-line object-cover object-top" [src]="s.src" alt="" loading="lazy" />
+                    </a>
                   } @else {
-                    <div class="placeholder flex aspect-16/10 w-full items-center justify-center border-2 border-dashed border-line-2 bg-panel p-3 text-center text-muted">
+                    <div class="placeholder flex aspect-2/1 w-full items-center justify-center border-2 border-dashed border-line-2 bg-panel p-3 text-center text-muted">
                       Screenshot coming soon: {{ s.caption }}
                     </div>
                   }
