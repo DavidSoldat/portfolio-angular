@@ -48,3 +48,4 @@ dist/
 .angular/
 .vercel/
 .env*
+docs/
