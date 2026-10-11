@@ -1,8 +1,14 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
+import { PROJECTS } from './content/projects';
 
 export const serverRoutes: ServerRoute[] = [
+  { path: '', renderMode: RenderMode.Prerender },
   {
-    path: '**',
+    path: 'projects/:slug',
     renderMode: RenderMode.Prerender,
+    async getPrerenderParams() {
+      return PROJECTS.map((p) => ({ slug: p.slug }));
+    },
   },
+  { path: '**', renderMode: RenderMode.Client },
 ];
