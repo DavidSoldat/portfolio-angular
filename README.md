@@ -1,59 +1,26 @@
-# Pitwall
+# Pit Wall: David Soldat's portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.2.
+An F1 pit-wall themed portfolio built with Angular 22 and Tailwind CSS v4, prerendered to static HTML and hosted on Vercel.
 
-## Development server
+## Develop
 
-To start a local development server, run:
+    npm install          # needs Node 22.22.3+ or 24.15+
+    npx ng serve          # http://localhost:4200
+    npx ng test           # unit tests (Vitest)
+    npm run build         # static output in dist/pitwall/browser
 
-```bash
-ng serve
-```
+Content lives in `src/app/content/`: projects (with architecture diagrams), profile and stack.
+To add a screenshot, put the image in `public/projects/<slug>/` and set `src: '/projects/<slug>/<file>'` on the matching entry in `shots`.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Contact form
 
-## Code scaffolding
+`api/contact.ts` is a Vercel function that sends mail through Gmail. Set these environment variables in Vercel:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- `SMTP_EMAIL`: the Gmail address that sends and receives
+- `SMTP_PASSWORD`: a Gmail app password for that address
 
-```bash
-ng generate component component-name
-```
+## Deploy
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Push this repo to GitHub.
+2. Import it in Vercel. `vercel.json` sets the build command and output directory.
+3. Add the two environment variables, then deploy.
