@@ -47,9 +47,9 @@ export interface Project {
 }
 
 export const SECTOR_COLOR: Record<SectorKind, string> = {
-  architecture: 'var(--purple)',
-  data: 'var(--green)',
-  delivery: 'var(--yellow)',
+  architecture: 'var(--color-purple)',
+  data: 'var(--color-green)',
+  delivery: 'var(--color-yellow)',
 };
 
 export const SECTOR_NAME: Record<SectorKind, string> = {
