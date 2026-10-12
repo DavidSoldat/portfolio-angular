@@ -39,6 +39,7 @@ import { Project, SECTOR_COLOR, SECTOR_NAME, SectorKind } from '../content/types
     .row:hover { background: #1f1f2b; }
     .row.sel { background: var(--color-chalk); color: var(--color-ground); }
     .row.sel .name { color: #4a4a57; }
+    .row.sel .text-purple { color: #8a1fd6; }
     .row.flash { animation: row-flash .6s ease-out 1; }
     @keyframes row-flash { from { box-shadow: inset 0 0 0 3px var(--color-yellow); } to { box-shadow: inset 0 0 0 0 transparent; } }
   `,

@@ -77,7 +77,8 @@
 /* Launch beat: the dashboard assembles behind the stripes. */
 .launch .tower-row { animation: row-in .45s cubic-bezier(.2, .8, .2, 1) backwards; animation-delay: calc(var(--i, 0) * 60ms + .25s); }
 .launch app-onboard-panel, .launch app-driver-profile, .launch app-telemetry, .launch app-team-radio { animation: panel-in .5s ease-out .35s backwards; }
-@keyframes row-in { from { transform: translateX(-40px); opacity: 0; } }
+/* clip-path, not opacity: a half-faded row fails contrast audits mid-animation. */
+@keyframes row-in { from { transform: translateX(-40px); clip-path: inset(0 100% 0 0); } }
 @keyframes panel-in { from { opacity: 0; transform: translateY(12px); } }
 
 /* Page transitions (spec 9b). Stripes show in the gap between the old page leaving and the new one arriving. */
